@@ -22,7 +22,7 @@ public class Main {
             System.out.println("LED port is not connected.....");
         }
 
-        connector.displayMessage(1,"helloow");
+        connector.displayMessage(1,"Welcome to Business Automation Ltd.");
 
     }
 }
