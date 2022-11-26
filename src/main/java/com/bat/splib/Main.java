@@ -1,14 +1,28 @@
 package com.bat.splib;
+
+import com.bat.splib.configure.LEDConfig;
+import com.bat.splib.connector.LEDCommunicator;
+import com.bat.splib.connector.LEDConnector;
+
 /**
  * @author FRabbi
  * Date: 22 Nov 2022
  */
 public class Main {
     public static void main(String[] args) throws Exception {
-        SerialPortConnectorV2 serialPortConnectorV2 = SerialPortConnectorV2.getInstance();
-        System.out.println("Successfully executed....");
-        serialPortConnectorV2.connect("COM1");
-        serialPortConnectorV2.writetoport("sR");
-        serialPortConnectorV2.disconnect();
+        LEDCommunicator connector = LEDConnector.builder()
+                        .portName("COM1")
+                        .build();
+
+        LEDConfig config = connector.getLEDConfig();
+
+        if(connector.isConnected()){
+            System.out.println("LED port is connected.....");
+        }else {
+            System.out.println("LED port is not connected.....");
+        }
+
+        connector.displayMessage(1,"helloow");
+
     }
 }
