@@ -1,5 +1,5 @@
 
-package com.bat.splib.connector;
+package com.ba.ledlib.connector;
 
 import jssc.SerialPort;
 import jssc.SerialPortException;

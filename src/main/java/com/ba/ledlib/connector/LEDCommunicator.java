@@ -1,6 +1,6 @@
-package com.bat.splib.connector;
+package com.ba.ledlib.connector;
 
-import com.bat.splib.configure.LEDConfig;
+import com.ba.ledlib.configure.LEDConfig;
 /**
  * @author FRabbi
  * Date: 26 Nov 2022

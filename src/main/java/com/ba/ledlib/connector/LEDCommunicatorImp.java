@@ -1,11 +1,11 @@
-package com.bat.splib.connector;
+package com.ba.ledlib.connector;
 
-import com.bat.splib.configure.LEDConfig;
+import com.ba.ledlib.configure.LEDConfig;
 import io.reactivex.Single;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
-import static com.bat.splib.utils.Utils.*;
+import static com.ba.ledlib.utils.Utils.*;
 /**
  * @author FRabbi
  * Date: 26 Nov 2022

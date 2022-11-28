@@ -1,9 +1,9 @@
-package com.bat.splib.configure;
+package com.ba.ledlib.configure;
 
-import com.bat.splib.connector.LEDCommunicator;
+import com.ba.ledlib.connector.LEDCommunicator;
 
-import static com.bat.splib.utils.Utils.isValidDeviceId;
-import static com.bat.splib.utils.Utils.parseConfigData;
+import static com.ba.ledlib.utils.Utils.isValidDeviceId;
+import static com.ba.ledlib.utils.Utils.parseConfigData;
 /**
  * @author FRabbi
  * Date: 26 Nov 2022
