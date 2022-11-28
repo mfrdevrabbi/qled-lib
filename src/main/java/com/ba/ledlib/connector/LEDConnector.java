@@ -21,7 +21,7 @@ public class LEDConnector {
         return this;
     }
 
-    public LEDCommunicator build(){
+    public LEDCommunicator connect(){
 
         if(serialPortConnector == null){
             return null;
