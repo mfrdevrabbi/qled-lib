@@ -15,7 +15,7 @@ class LEDCommunicatorImp implements LEDCommunicator {
     private static boolean isWcMessageAlreadyLoaded;
     private static  String oldMessage;
     private final SerialPortConnectorV2 serialPortConnector;
-    private final boolean isConnected;
+    private boolean isConnected;
 
     private final CompositeDisposable disposables = new CompositeDisposable();
 
@@ -30,6 +30,11 @@ class LEDCommunicatorImp implements LEDCommunicator {
         return isConnected;
     }
 
+    /**
+     *
+     * @param hwId
+     * @param message
+     */
     @Override
     public void displayMessage(int hwId, String message) {
         System.out.println("Message send ====> " + message);
@@ -54,6 +59,11 @@ class LEDCommunicatorImp implements LEDCommunicator {
         oldMessage = message;
     }
 
+    /**
+     *
+     * @param message
+     * @return
+     */
     private boolean isValidMessageText(String message) {
         if (message == null || message.isEmpty() || message.length() < 8) {
             return false;
@@ -61,7 +71,12 @@ class LEDCommunicatorImp implements LEDCommunicator {
         return true;
     }
 
-
+    /**
+     *
+     * @param hwId
+     * @param counterNo
+     * @param token
+     */
     @Override
     public void displayToken(int hwId, int counterNo, String token) {
         System.out.println("Token send ====> " + token);
@@ -70,23 +85,41 @@ class LEDCommunicatorImp implements LEDCommunicator {
         writeToPortForReload(tokenCode, true);
     }
 
+    /**
+     *
+     * @param rawData
+     */
     @Override
-    public void sendConfigCode(String configCode) {
-        writeToPortForReload(configCode, true);
+    public void writeRawData(String rawData) {
+        writeToPortForReload(rawData, true);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public LEDConfig getLEDConfig() {
         return new LEDConfig(this);
     }
 
-
+    /**
+     *
+     * @return port close status
+     */
     @Override
     public boolean disconnect() {
         disposables.clear();
-        return serialPortConnector.disconnect();
+        boolean disconnect = serialPortConnector.disconnect();
+        this.isConnected = disconnect;
+        return disconnect;
     }
 
+    /**
+     *
+     * @param data
+     * @param isReload
+     */
     private void writeToPortForReload(final String data, boolean isReload) {
         sendDataToLed(data);
 
@@ -98,7 +131,10 @@ class LEDCommunicatorImp implements LEDCommunicator {
 
     }
 
-
+    /**
+     *
+     * @param data
+     */
 
     private void sendDataToLed(final String data) {
         disposables.add(Single

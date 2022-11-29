@@ -98,7 +98,7 @@ public class LEDConfig {
             }
             String parseData = parseConfigData(oldHardwareId, newHardwareId, ConfigOption.MSG, getColorModel(), borderShape, "Welcome");
             logPrint("configRequestMsg:: Config Code ::" + parseData);
-            ledCommunicator.sendConfigCode(parseData);
+            ledCommunicator.writeRawData(parseData);
         }
 
         private void configRequestToken() {
@@ -107,7 +107,7 @@ public class LEDConfig {
             }
             String parseData = parseConfigData(oldHardwareId, newHardwareId, ConfigOption.TOKEN, getColorModel(), borderShape, "FR01");
             logPrint("configRequestToken :: Config Code ::" + parseData);
-            ledCommunicator.sendConfigCode(parseData);
+            ledCommunicator.writeRawData(parseData);
         }
 
         private void configRequestCounterBorderColor() {
@@ -116,7 +116,7 @@ public class LEDConfig {
             }
             String parseData = parseConfigData(oldHardwareId, newHardwareId, ConfigOption.TOKEN_BORDER_COLOR, getColorModel(), borderShape, "FR02");
             logPrint("configRequestCounterBorderColor ::Config Code ::" + parseData);
-            ledCommunicator.sendConfigCode(parseData);
+            ledCommunicator.writeRawData(parseData);
         }
 
 
@@ -126,7 +126,7 @@ public class LEDConfig {
             }
             String parseData = parseConfigData(oldHardwareId, newHardwareId, ConfigOption.TOKEN_BORDER_SHAPE, getColorModel(), borderShape, "FR03");
             logPrint("configRequestCounterBorderShape Config Code ::" + parseData);
-            ledCommunicator.sendConfigCode(parseData);
+            ledCommunicator.writeRawData(parseData);
         }
 
         private ColorModel getColorModel() {

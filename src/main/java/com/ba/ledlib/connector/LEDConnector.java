@@ -1,10 +1,12 @@
 package com.ba.ledlib.connector;
+
 /**
  * @author FRabbi
  * Date: 26 Nov 2022
  */
 public class LEDConnector {
     private SerialPortConnectorV2 serialPortConnector;
+    private static LEDConnector ledConnector;
 
     private String portName = "COM";
 
@@ -12,19 +14,29 @@ public class LEDConnector {
         serialPortConnector = SerialPortConnectorV2.getInstance();
     }
 
-    public static LEDConnector builder(){
-        return new LEDConnector();
+    public static LEDConnector builder() {
+        if (ledConnector == null) {
+            return new LEDConnector();
+        }
+        return ledConnector;
     }
 
+    /**
+     * @param portName
+     * @return
+     */
     public LEDConnector portName(String portName) {
         this.portName = portName;
-        return this;
+        return ledConnector;
     }
 
-    public LEDCommunicator connect(){
+    /**
+     * @return LEDCommunicator
+     */
+    public LEDCommunicator connect() {
 
-        if(serialPortConnector == null){
-            return null;
+        if (serialPortConnector == null) {
+            throw new RuntimeException("Serial-port connector null reference..");
         }
 
         try {
