@@ -6,7 +6,6 @@ package com.ba.ledlib.connector;
  */
 public class LEDConnector {
     private SerialPortConnectorV2 serialPortConnector;
-    private static LEDConnector ledConnector;
 
     private String portName = "COM";
 
@@ -15,10 +14,7 @@ public class LEDConnector {
     }
 
     public static LEDConnector builder() {
-        if (ledConnector == null) {
-            return new LEDConnector();
-        }
-        return ledConnector;
+       return new LEDConnector();
     }
 
     /**
@@ -27,7 +23,7 @@ public class LEDConnector {
      */
     public LEDConnector portName(String portName) {
         this.portName = portName;
-        return ledConnector;
+        return this;
     }
 
     /**

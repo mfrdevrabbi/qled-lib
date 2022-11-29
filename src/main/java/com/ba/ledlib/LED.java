@@ -15,9 +15,12 @@ public class LED {
     public static void main(String[] args) {
         System.out.println("program is running.......");
 
-//        LEDCommunicator connector = LEDConnector.builder()
-//                .portName("COM1")
-//                .connect();
+        LEDCommunicator connector = LEDConnector.builder()
+                .portName("COM1")
+                .connect();
+
+    LEDConnector.builder()
+                .portName("COM1");
 
 //        LEDConfig ledConfig = connector.getLEDConfig();
 //        ledConfig.getConfigBuilder()
