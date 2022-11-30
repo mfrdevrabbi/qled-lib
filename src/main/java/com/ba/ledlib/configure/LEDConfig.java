@@ -96,7 +96,7 @@ public class LEDConfig {
             if (!isValidHardwareId(oldHardwareId) || !isValidHardwareId(newHardwareId) || ledCommunicator == null) {
                 return;
             }
-            String parseData = parseConfigData(oldHardwareId, newHardwareId, ConfigOption.MSG, getColorModel(), borderShape, "Welcome");
+            String parseData = parseConfigData(oldHardwareId, newHardwareId, ConfigOption.MSG, getColorModel(), borderShape, "Welcome to Business Automation");
             logPrint("configRequestMsg:: Config Code ::" + parseData);
             ledCommunicator.writeRawData(parseData);
         }
